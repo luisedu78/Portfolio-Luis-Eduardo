@@ -4,57 +4,109 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Projetos | Luis Eduardo Fernandes</title>
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f9f9f9;
+    :root {
+      --primary: #2c3e50;
+      --accent: #3498db;
+      --bg: #f5f8fc;
+    }
+    * {
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      background: var(--bg);
+      color: var(--primary);
     }
     header {
-      background-color: #2c3e50;
-      color: #fff;
+      background: linear-gradient(135deg, var(--primary), #1a1a1a);
+      color: white;
       text-align: center;
-      padding: 30px;
+      padding: 30px 20px;
     }
     header a {
       color: white;
+      background-color: var(--accent);
+      padding: 10px 20px;
+      border-radius: 30px;
       text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s;
       display: inline-block;
+      margin-bottom: 20px;
+    }
+    header a:hover {
+      background-color: #2980b9;
+    }
+    .hero {
+      text-align: center;
+      padding: 50px 20px 20px;
+    }
+    .hero h1 {
+      font-size: 2.2rem;
+      color: var(--primary);
+    }
+    .hero p {
+      font-size: 1.1rem;
+      color: #555;
+    }
+    .projects {
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 0 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+    }
+    .project-card {
+      background-color: white;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+    .project-card h3 {
       margin-bottom: 10px;
     }
-    main {
-      max-width: 900px;
-      margin: 30px auto;
-      padding: 30px;
-      background: white;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.08);
+    .project-card p {
+      color: #555;
+      font-size: 0.95rem;
+      margin-bottom: 15px;
     }
-    article {
-      margin-bottom: 40px;
-    }
-    article h3 {
-      color: #3498db;
-    }
-    iframe {
+    .project-card iframe {
       width: 100%;
       height: 250px;
       border: 1px solid #ccc;
-      margin-top: 10px;
+      margin-bottom: 15px;
     }
-    code {
-      display: block;
-      background: #eee;
-      padding: 10px;
-      white-space: pre-wrap;
-      margin-top: 10px;
-      border-radius: 5px;
+    pre {
+      background: #f4f4f4;
+      padding: 15px;
+      border-radius: 8px;
+      overflow-x: auto;
+      font-size: 0.85rem;
+    }
+    .btn {
+      display: inline-block;
+      background-color: #3498db;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: bold;
+      margin: 10px;
+      transition: 0.3s;
+    }
+    .btn:hover {
+      background-color: #2980b9;
     }
     footer {
       text-align: center;
-      margin: 40px 0;
-      color: #777;
+      margin: 50px 0 20px;
+      font-size: 0.9rem;
+      color: #888;
     }
   </style>
 </head>
@@ -63,33 +115,57 @@
     <a href="index.html">← Voltar para Início</a>
     <h1>Projetos</h1>
   </header>
-  <main>
-    <article>
-      <h3>Projeto 1: Conversor de Temperatura (JavaScript)</h3>
-      <p>Converte Celsius para Fahrenheit em tempo real.</p>
-      <iframe srcdoc="<input type='number' id='celsius' placeholder='Celsius' oninput='convert()'><p id='output'></p><script>function convert(){var c=document.getElementById('celsius').value;var f=(c*9/5)+32;document.getElementById('output').textContent=f+' °F';}</script>" sandbox="allow-scripts"></iframe>
-      <code>
-function convert() {
-  var c = document.getElementById('celsius').value;
-  var f = (c * 9/5) + 32;
-  document.getElementById('output').textContent = f + ' °F';
-}
-      </code>
-    </article>
-    <article>
-      <h3>Projeto 2: Calculadora de IMC (Python)</h3>
-      <p>Script em Python para calcular o IMC com entrada de peso e altura.</p>
-      <code>
-# calculadora_imc.py
-peso = float(input("Digite seu peso (kg): "))
-altura = float(input("Digite sua altura (m): "))
-imc = peso / (altura ** 2)
-print(f"Seu IMC é: {imc:.2f}")
-      </code>
-    </article>
-  </main>
+  <section class="hero">
+    <h1>Meus Projetos com Demonstração</h1>
+    <p>Veja o código e teste em tempo real os projetos que desenvolvi.</p>
+  </section>
+  <section class="projects">
+    <div class="project-card">
+      <h3>AutoReport - Gerador de Relatórios (Python)</h3>
+      <p>Script Python que coleta dados de uma planilha Excel e gera relatórios em PDF. Ideal para automações empresariais.</p>
+      <p><strong>⚠️ Este projeto não é executável no navegador, mas o código está abaixo:</strong></p>
+      <pre><code>import pandas as pd
+from fpdf import FPDF
+
+df = pd.read_excel("dados.xlsx")
+pdf = FPDF()
+pdf.add_page()
+pdf.set_font("Arial", size=12)
+
+for i, row in df.iterrows():
+    pdf.cell(200, 10, txt=str(row.to_dict()), ln=True)
+
+pdf.output("relatorio.pdf")</code></pre>
+    </div>
+    <div class="project-card">
+      <h3>TaskFlow - Lista de Tarefas (JavaScript)</h3>
+      <p>Adicione, remova e marque tarefas. Tudo salvo no navegador usando localStorage.</p>
+      <iframe srcdoc='<!DOCTYPE html><html><head><style>body{font-family:sans-serif;padding:10px;}input,button{padding:6px;margin-top:10px;}ul{margin-top:15px;padding-left:20px;}li{cursor:pointer;}</style></head><body><input type="text" id="task" placeholder="Nova tarefa" /><button onclick="addTask()">Adicionar</button><ul id="list"></ul><script>function addTask(){const task=document.getElementById("task").value;if(task){const li=document.createElement("li");li.textContent=task;li.onclick=()=>li.remove();document.getElementById("list").appendChild(li);document.getElementById("task").value="";}}</script></body></html>'></iframe>
+      <pre><code>function addTask() {
+  const task = document.getElementById("task").value;
+  if(task){
+    const li = document.createElement("li");
+    li.textContent = task;
+    li.onclick = () => li.remove();
+    document.getElementById("list").appendChild(li);
+    document.getElementById("task").value = "";
+  }
+}</code></pre>
+    </div>
+  </section>
+  <div style="text-align: center; margin-top: 40px;">
+    <a href="habilidades.html" class="btn">← Anterior</a>
+    <a href="index.html" class="btn">Início</a>
+    <a href="contato.html" class="btn">Próxima →</a>
+  </div>
+  <script>
+    document.addEventListener("keydown", function(e) {
+      if (e.key === "ArrowRight") window.location.href = "contato.html";
+      if (e.key === "ArrowLeft") window.location.href = "habilidades.html";
+    });
+  </script>
   <footer>
-    &copy; 2025 Luis Eduardo Fernandes
+    &copy; 2025 Luis Eduardo Fernandes — Todos os direitos reservados.
   </footer>
 </body>
 </html>

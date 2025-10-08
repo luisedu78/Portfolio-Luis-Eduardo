@@ -5,37 +5,112 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Sobre | Luis Eduardo Fernandes</title>
   <style>
+    :root {
+      --primary: #2c3e50;
+      --accent: #3498db;
+      --bg: #f5f8fc;
+      --text: #2c3e50;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
-      font-family: sans-serif;
-      background: #f5f5f5;
-      padding: 20px;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      background: var(--bg);
+      color: var(--text);
       line-height: 1.6;
-      color: #333;
     }
     header {
-      background-color: #2c3e50;
+      background: linear-gradient(135deg, var(--primary), #1a1a1a);
       color: white;
+      padding: 30px 20px;
       text-align: center;
-      padding: 30px 10px;
     }
     header a {
       color: white;
+      background-color: var(--accent);
+      padding: 10px 20px;
+      border-radius: 30px;
       text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s;
       display: inline-block;
+      margin-bottom: 20px;
+    }
+    header a:hover { background-color: #2980b9; }
+    .hero {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      padding: 50px 20px;
+      background-color: white;
+    }
+    .hero img {
+      width: 200px;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 4px solid var(--accent);
+      margin-right: 40px;
+      animation: float 4s ease-in-out infinite;
+    }
+    .hero .intro {
+      max-width: 600px;
+    }
+    .hero .intro h1 {
+      font-size: 2rem;
+      margin-bottom: 10px;
+      color: var(--primary);
+    }
+    .hero .intro p {
+      font-size: 1.1rem;
+      color: #333;
+    }
+    .cards {
+      max-width: 1000px;
+      margin: 50px auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      padding: 0 20px;
+    }
+    .card {
+      background-color: white;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      transition: transform 0.3s;
+    }
+    .card:hover { transform: translateY(-5px); }
+    .card h2 {
+      color: var(--accent);
       margin-bottom: 10px;
     }
-    main {
-      max-width: 800px;
-      margin: auto;
-      background: white;
-      padding: 30px;
-      border-radius: 8px;
-      box-shadow: 0 0 8px rgba(0,0,0,0.1);
+    .card p { color: #555; }
+    .btn {
+      display: inline-block;
+      background-color: #3498db;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: bold;
+      margin: 10px;
+      transition: 0.3s;
     }
+    .btn:hover { background-color: #2980b9; }
     footer {
       text-align: center;
       margin: 40px 0 20px;
-      color: #999;
+      font-size: 0.9rem;
+      color: #888;
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    @media (max-width: 768px) {
+      .hero { flex-direction: column; text-align: center; }
+      .hero img { margin: 0 0 20px 0; }
     }
   </style>
 </head>
@@ -44,14 +119,39 @@
     <a href="index.html">← Voltar para Início</a>
     <h1>Sobre Mim</h1>
   </header>
-  <main>
-    <p>Olá! Meu nome é Luis Eduardo Fernandes, sou programador apaixonado por tecnologia e soluções criativas. Nos últimos 5 anos venho me dedicando ao desenvolvimento de sites, aplicações web e automações, sempre buscando unir design intuitivo com código limpo e funcional.</p>
-    <p>Sou movido por desafios e acredito que a programação é uma ferramenta poderosa para transformar ideias em realidade. Tenho experiência com HTML, CSS, JavaScript, Python, React, e estou sempre estudando para acompanhar as tendências do mercado.</p>
-    <p>No meu portfólio, você vai encontrar alguns dos projetos que desenvolvi — cada um deles representa minha dedicação em entregar resultados de qualidade, seja para empresas, clientes ou projetos pessoais.</p>
-    <p>Quando não estou codificando, sou músico e gosto de aprender coisas novas, explorar soluções criativas e colaborar com outros profissionais para criar produtos digitais que façam a diferença.</p>
-  </main>
+  <section class="hero">
+    <img src="luis-eduardo.jpeg" alt="Luis Eduardo Fernandes" />
+    <div class="intro">
+      <h1>Programador & Músico</h1>
+      <p>Olá! Sou Luis Eduardo Fernandes. Minha paixão por tecnologia se une à criatividade da música, tornando cada projeto uma experiência única. Com mais de 5 anos de atuação, desenvolvo soluções web focadas em funcionalidade, design e resultado.</p>
+    </div>
+  </section>
+  <section class="cards">
+    <div class="card">
+      <h2>Quem sou</h2>
+      <p>Sou movido por desafios. Acredito que cada problema traz uma oportunidade de criar algo melhor. Programar é transformar ideias em soluções reais e eficientes.</p>
+    </div>
+    <div class="card">
+      <h2>Minha trajetória</h2>
+      <p>Atuo com desenvolvimento web, automações e aplicações em HTML, CSS, JS, Python e React. Também lidero equipes musicais como arranjador e diretor, unindo técnica e arte.</p>
+    </div>
+    <div class="card">
+      <h2>Curiosidades</h2>
+      <p>🎵 Toco na banda distrital do Paraná e nacional da igreja.<br>🏐 Jogo vôlei por hobby.<br>📚 Leio livros sobre desenvolvimento pessoal e tecnologia.</p>
+    </div>
+  </section>
+  <div style="text-align: center; margin-top: 40px;">
+    <a href="index.html" class="btn">← Início</a>
+    <a href="habilidades.html" class="btn">Próxima →</a>
+  </div>
+  <script>
+    document.addEventListener("keydown", function(e) {
+      if (e.key === "ArrowRight") window.location.href = "habilidades.html";
+      if (e.key === "ArrowLeft") window.location.href = "index.html";
+    });
+  </script>
   <footer>
-    &copy; 2025 Luis Eduardo Fernandes
+    &copy; 2025 Luis Eduardo Fernandes — Todos os direitos reservados.
   </footer>
 </body>
 </html>

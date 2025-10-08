@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Habilidades | Luis Eduardo Fernandes</title>
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <style>
+    :root {
+      --primary: #2c3e50;
+      --accent: #3498db;
+      --bg: #f5f8fc;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      background-color: var(--bg);
+      color: #2c3e50;
+      line-height: 1.6;
+    }
+    header {
+      background: linear-gradient(135deg, var(--primary), #1a1a1a);
+      color: white;
+      text-align: center;
+      padding: 30px 20px;
+    }
+    header a {
+      color: white;
+      background-color: var(--accent);
+      padding: 10px 20px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s;
+      display: inline-block;
+      margin-bottom: 20px;
+    }
+    header a:hover { background-color: #2980b9; }
+    .hero {
+      text-align: center;
+      padding: 50px 20px 20px;
+    }
+    .hero h1 {
+      font-size: 2.2rem;
+      margin-bottom: 10px;
+      color: var(--primary);
+    }
+    .hero p {
+      font-size: 1.1rem;
+      color: #555;
+    }
+    .skills {
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 0 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 25px;
+    }
+    .skill-card {
+      background: white;
+      border-radius: 12px;
+      padding: 25px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .skill-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+    }
+    .skill-card i {
+      font-size: 2.5rem;
+      margin-bottom: 15px;
+      color: var(--accent);
+    }
+    .skill-card h3 {
+      margin-bottom: 10px;
+      font-size: 1.2rem;
+    }
+    .skill-card p {
+      font-size: 0.95rem;
+      color: #666;
+    }
+    .btn {
+      display: inline-block;
+      background-color: #3498db;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: bold;
+      margin: 10px;
+      transition: 0.3s;
+    }
+    .btn:hover { background-color: #2980b9; }
+    footer {
+      text-align: center;
+      margin: 40px 0 20px;
+      font-size: 0.9rem;
+      color: #888;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="index.html">← Voltar para Início</a>
+    <h1>Minhas Habilidades</h1>
+  </header>
+  <section class="hero">
+    <h1>Conhecimentos Técnicos</h1>
+    <p>Estas são as principais tecnologias e linguagens com as quais trabalho atualmente.</p>
+  </section>
+  <section class="skills">
+    <div class="skill-card">
+      <i class="fab fa-html5"></i>
+      <h3>HTML5</h3>
+      <p>Estruturação de páginas web semânticas, responsivas e otimizadas para SEO.</p>
+    </div>
+    <div class="skill-card">
+      <i class="fab fa-css3-alt"></i>
+      <h3>CSS3</h3>
+      <p>Estilização com flexbox, grid, animações e design responsivo moderno.</p>
+    </div>
+    <div class="skill-card">
+      <i class="fab fa-js-square"></i>
+      <h3>JavaScript</h3>
+      <p>Interatividade, lógica de aplicações web, DOM, APIs e localStorage.</p>
+    </div>
+    <div class="skill-card">
+      <i class="fab fa-python"></i>
+      <h3>Python</h3>
+      <p>Automação de tarefas, manipulação de dados e geração de relatórios.</p>
+    </div>
+    <div class="skill-card">
+      <i class="fab fa-react"></i>
+      <h3>React</h3>
+      <p>Criação de interfaces SPA com componentes reutilizáveis e estados.</p>
+    </div>
+  </section>
+  <div style="text-align: center; margin-top: 40px;">
+    <a href="sobre.html" class="btn">← Anterior</a>
+    <a href="index.html" class="btn">Início</a>
+    <a href="projetos.html" class="btn">Próxima →</a>
+  </div>
+  <script>
+    document.addEventListener("keydown", function(e) {
+      if (e.key === "ArrowRight") window.location.href = "projetos.html";
+      if (e.key === "ArrowLeft") window.location.href = "sobre.html";
+    });
+  </script>
+  <footer>
+    &copy; 2025 Luis Eduardo Fernandes — Todos os direitos reservados.
+  </footer>
+</body>
+</html>
