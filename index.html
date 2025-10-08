@@ -2,128 +2,249 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Bem-vindo | Luis Eduardo Fernandes</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Portfólio de Luis Eduardo Fernandes — Desenvolvedor e Músico (Tecladista). Projetos com demos ao vivo, serviços e contato." />
+  <title>Portfólio — Luis Eduardo Fernandes</title>
   <style>
-    :root {
-      --primary: #2c3e50;
-      --accent: #3498db;
-      --bg: #f5f8fc;
-      --text: #1c1c1c;
-      --note: rgba(52, 152, 219, 0.1);
+    :root{
+      --bg:#0e1116;--card:#141922;--surface:#0f1420;--text:#e8eef9;--muted:#9fb3c8;
+      --brand:#5ac8fa;--brand-2:#8a5afc;--shadow:0 10px 30px rgba(0,0,0,.35);
+      --radius:20px;--outline:3px solid #ffd60a;
     }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+    *,*::before,*::after{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial;
+      color:var(--text);
+      background: radial-gradient(1200px 800px at 80% -10%, rgba(90,200,250,.12), transparent 60%),
+                 radial-gradient(900px 600px at -10% 10%, rgba(138,90,252,.10), transparent 55%),
+                 var(--bg);
+      line-height:1.6;
     }
+    a{color:var(--brand);text-decoration:none}
+    a:hover{text-decoration:underline}
+    :focus-visible{outline:var(--outline);outline-offset:3px;border-radius:10px}
 
-    body {
-      background: linear-gradient(120deg, var(--primary), #1a1a1a);
-      color: white;
-      font-family: 'Segoe UI', Tahoma, sans-serif;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      text-align: center;
-      overflow: hidden;
+    .container{max-width:1120px;margin:0 auto;padding:0 clamp(16px,4vw,28px)}
+    section{padding:64px 0}
+    .section-title{font-size:clamp(22px,3vw,32px);margin:0 0 12px}
+    .section-sub{color:var(--muted);margin:0 0 28px}
+
+    header{position:sticky;top:0;z-index:50;backdrop-filter:blur(8px);
+      background:linear-gradient(180deg, rgba(20,25,34,.85), rgba(20,25,34,.55) 40%, rgba(20,25,34,0));
+      border-bottom:1px solid rgba(255,255,255,.08);
     }
+    nav{display:flex;align-items:center;justify-content:space-between;padding:12px 0;gap:12px}
+    .brand{display:flex;align-items:center;gap:10px;font-weight:700}
+    .badge{font-size:12px;padding:4px 8px;border-radius:999px;background:linear-gradient(90deg, rgba(90,200,250,.22), rgba(138,90,252,.22));border:1px solid rgba(255,255,255,.1)}
 
-    h1 {
-      font-size: 2.5rem;
-      margin-bottom: 10px;
+    .hamburger{display:inline-flex;flex-direction:column;gap:4px;border:1px solid rgba(255,255,255,.15);
+      padding:8px 10px;border-radius:12px;background:rgba(255,255,255,.05);cursor:pointer}
+    .hamburger span{width:20px;height:2px;background:#e8eef9;display:block;border-radius:2px}
+    .menu{position:fixed;inset:auto 0 0 auto;right:16px;top:56px;min-width:260px;max-width:85vw;
+      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border:1px solid rgba(255,255,255,.10);border-radius:16px;box-shadow:var(--shadow);
+      transform:translateY(-12px) scale(.98);opacity:0;pointer-events:none;transition:.2s ease;
     }
+    .menu.open{transform:none;opacity:1;pointer-events:auto}
+    .menu a,.menu button{display:flex;width:100%;text-align:left;padding:12px 14px;border:none;background:transparent;color:var(--text);font-weight:600}
+    .menu a + a, .menu a + button, .menu button + a{border-top:1px solid rgba(255,255,255,.08)}
 
-    p {
-      font-style: italic;
-      margin-bottom: 30px;
-      font-size: 1.1rem;
-      color: #ccc;
-      max-width: 600px;
+    .hero{padding:56px 0 40px}
+    .hero-inner{display:grid;place-items:center;text-align:center;gap:18px}
+    .avatar{
+      width:clamp(120px,18vw,180px);height:clamp(120px,18vw,180px);border-radius:50%;
+      border:1px solid rgba(255,255,255,.25);
+      box-shadow:0 0 0 6px rgba(90,200,250,.10), 0 10px 30px rgba(0,0,0,.35);
+      object-fit:cover;background:#0b0e14;
     }
+    .title{font-size:clamp(28px,4.2vw,50px);line-height:1.15;margin:0}
+    .subtitle{font-size:clamp(16px,2vw,20px);color:var(--muted);margin:0}
 
-    img.avatar {
-      width: 140px;
-      height: 140px;
-      object-fit: cover;
-      border-radius: 50%;
-      border: 3px solid white;
-      margin-bottom: 25px;
-      animation: pulse 3s infinite ease-in-out;
-    }
+    .grid{display:grid;gap:16px}
+    @media(min-width:760px){.grid.cols-3{grid-template-columns:repeat(3,1fr)}}
+    @media(min-width:760px){.grid.cols-2{grid-template-columns:repeat(2,1fr)}}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.1);
+      border-radius:18px;padding:18px;box-shadow:var(--shadow)}
+    .card h3{margin:8px 0 8px;font-size:18px}
+    .card p{margin:0 0 12px;color:var(--muted)}
+    .tags{display:flex;gap:8px;flex-wrap:wrap}
+    .tag{font-size:12px;padding:6px 10px;border-radius:999px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.03)}
+    .project-thumb{aspect-ratio:16/9;width:100%;border-radius:12px;object-fit:cover;border:1px solid rgba(255,255,255,.1)}
+    .btn{display:inline-flex;align-items:center;gap:10px;padding:12px 16px;border-radius:14px;font-weight:700;border:1px solid rgba(255,255,255,.1);
+      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));box-shadow:var(--shadow)}
+    .cta-only{display:flex;gap:12px;flex-wrap:wrap}
+    .btn.primary{background:linear-gradient(90deg, var(--brand), var(--brand-2));color:#06121c;border:none}
 
-    .buttons {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-      width: 220px;
-    }
-
-    .buttons a {
-      background-color: var(--accent);
-      padding: 12px;
-      border-radius: 30px;
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
-      transition: background 0.3s, transform 0.2s;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-    }
-
-    .buttons a:hover {
-      background-color: #5dade2;
-      transform: scale(1.05);
-    }
-
-    .note {
-      position: absolute;
-      font-size: 2rem;
-      color: white;
-      opacity: 0.05;
-      animation: float 10s linear infinite;
-    }
-
-    .note:nth-child(1) { top: 10%; left: 5%; animation-delay: 0s; }
-    .note:nth-child(2) { top: 40%; left: 80%; animation-delay: 3s; }
-    .note:nth-child(3) { top: 70%; left: 30%; animation-delay: 6s; }
-
-    @keyframes float {
-      0% { transform: translateY(0); }
-      100% { transform: translateY(-100vh); }
-    }
-
-    @keyframes pulse {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.03); }
-    }
-
-    @media (max-width: 600px) {
-      h1 { font-size: 1.8rem; }
-      .buttons { width: 90%; }
-    }
+    footer{padding:40px 0 60px;color:var(--muted);text-align:center}
   </style>
 </head>
 <body>
+  <header>
+    <div class="container">
+      <nav aria-label="Navegação principal">
+        <div class="brand" aria-label="Identidade">
+          <svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M3 12h2v6H3v-6Zm4-8h2v14H7V4Zm4 4h2v10h-2V8Zm4-3h2v13h-2V5Zm4 6h2v7h-2v-7Z"/></svg>
+          <span>Luis Eduardo Fernandes</span>
+          <span class="badge">Dev & Música</span>
+        </div>
+        <button id="hamburger" class="hamburger" aria-label="Abrir menu" aria-controls="menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+        <div id="menu" class="menu" role="menu">
+          <a href="#sobre" role="menuitem">Sobre</a>
+          <a href="#habilidades" role="menuitem">Habilidades</a>
+          <a href="#projetos" role="menuitem">Projetos</a>
+          <a href="#contato" role="menuitem">Contato</a>
+          <button id="audioToggle" role="menuitem" aria-pressed="false">🎧 Trilha sutil</button>
+        </div>
+      </nav>
+    </div>
+  </header>
 
-  <!-- Notas musicais sutis flutuando -->
-  <div class="note">🎵</div>
-  <div class="note">🎶</div>
-  <div class="note">🎼</div>
+  <main id="conteudo">
+    <section class="hero" aria-label="Capa">
+      <div class="container hero-inner">
+        <img src="assets/images/avatar.jpg" alt="Foto de Luis Eduardo Fernandes tocando teclado" class="avatar" loading="lazy"/>
+        <h1 class="title">Desenvolvedor Front‑End & Tecladista</h1>
+        <p class="subtitle">Código limpo, performance, acessibilidade e visual envolvente. Projetos com demos ao vivo e foco em resultados.</p>
+      </div>
+    </section>
 
-  <!-- Conteúdo principal -->
-  <img src="luis-eduardo.jpeg" alt="Luis Eduardo" class="avatar">
-  <h1>Luis Eduardo Fernandes</h1>
-  <p>"Os planos bem elaborados levam à fartura, mas o apressado sempre acaba na miséria Pv-21:5"</p>
+    <section id="sobre" aria-labelledby="sobre-title">
+      <div class="container">
+        <h2 id="sobre-title" class="section-title">Sobre mim</h2>
+        <p class="section-sub">Sou o Luis, desenvolvedor front‑end e músico. Uno tecnologia e música para criar interfaces fluidas e memoráveis. Trabalho com HTML, CSS e JavaScript puros, priorizando acessibilidade (WCAG 2.2), performance e um design que traduz a sua marca.</p>
+        <div class="grid cols-3">
+          <div class="card"><h3>Princípios</h3><p>Clareza, rapidez e consistência. Menos fricção, mais resultado.</p><div class="tags"><span class="tag">A11y</span><span class="tag">SEO</span><span class="tag">Core Web Vitals</span></div></div>
+          <div class="card"><h3>Stack</h3><p>HTML, CSS (BEM / utilitária) e JS Vanilla. Integrações simples e eficientes.</p><div class="tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JS</span></div></div>
+          <div class="card"><h3>Música</h3><p>Tecladista/arranjador. Elementos musicais sutis compõem a identidade visual.</p><div class="tags"><span class="tag">Teclado</span><span class="tag">Sound Design</span></div></div>
+        </div>
+      </div>
+    </section>
 
-  <div class="buttons">
-    <a href="sobre.html">Sobre Mim</a>
-    <a href="habilidades.html">Habilidades</a>
-    <a href="projetos.html">Projetos</a>
-    <a href="contato.html">Contato</a>
-  </div>
+    <section id="habilidades" aria-labelledby="hab-title">
+      <div class="container">
+        <h2 id="hab-title" class="section-title">Habilidades</h2>
+        <p class="section-sub">Código organizado, design responsivo, foco em acessibilidade e conversão.</p>
+        <div class="grid cols-2">
+          <div class="card">
+            <h3>Front‑End Essencial</h3>
+            <ul>
+              <li>Semântica, contrastes adequados e <em>focus states</em> visíveis.</li>
+              <li>Layouts fluidos com Grid/Flex, <em>responsive images</em> e <code>loading="lazy"</code>.</li>
+              <li>Boas práticas de performance (pré‑conexões, minificação, fontes seguras).</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>UX com identidade</h3>
+            <ul>
+              <li>CTAs claros e hierarquia visual forte.</li>
+              <li>Microinterações suaves sem exageros.</li>
+              <li>Branding com elementos musicais discretos.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
 
+    <section id="projetos" aria-labelledby="proj-title">
+      <div class="container">
+        <h2 id="proj-title" class="section-title">Projetos</h2>
+        <p class="section-sub">Cada projeto tem seu próprio site de demonstração.</p>
+        <div class="grid cols-3">
+          <article class="card">
+            <img class="project-thumb" src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1200&auto=format&fit=crop" alt="Prévia de interface web" loading="lazy"/>
+            <h3>Landing Acessível</h3>
+            <p>Landing page com navegação por teclado, foco visível e contraste AA.</p>
+            <div class="tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">A11y</span></div>
+            <a class="btn" href="projetos/landing-acessivel/">Visualizar projeto</a>
+          </article>
+          <article class="card">
+            <img class="project-thumb" src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1200&auto=format&fit=crop" alt="Prévia de componente interativo" loading="lazy"/>
+            <h3>Componentes Interativos</h3>
+            <p>Cards e modais com animações discretas, sem dependências externas.</p>
+            <div class="tags"><span class="tag">JS Vanilla</span><span class="tag">UX</span></div>
+            <a class="btn" href="projetos/componentes-interativos/">Visualizar projeto</a>
+          </article>
+          <article class="card">
+            <img class="project-thumb" src="https://images.unsplash.com/photo-1487017159836-4e23ece2e4cf?q=80&w=1200&auto=format&fit=crop" alt="Prévia de site musical" loading="lazy"/>
+            <h3>Site Musical</h3>
+            <p>Identidade sonora + visual com player sutil e visual elegante.</p>
+            <div class="tags"><span class="tag">Audio</span><span class="tag">Branding</span></div>
+            <a class="btn" href="projetos/site-musical/">Visualizar projeto</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contato" aria-labelledby="contato-title">
+      <div class="container">
+        <h2 id="contato-title" class="section-title">Contato</h2>
+        <p class="section-sub">Vamos conversar sobre seu projeto? Respondo rápido.</p>
+        <div class="grid cols-2">
+          <div class="card">
+            <h3>Formas de contato</h3>
+            <ul>
+              <li>WhatsApp: <a href="https://wa.me/5541998022655" target="_blank" rel="noopener">(41) 998022655</a></li>
+              <li>E‑mail: <a href="mailto:luisedufernandes2@gmail.com">luisedufernandes2@gmail.com</a></li>
+              <li>Instagram: <a href="https://instagram.com/luis_edu_keys" target="_blank" rel="noopener">@luis_edu_keys</a></li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Chamada para ação</h3>
+            <div class="cta-only">
+              <a class="btn primary" href="https://wa.me/5541998022655?text=Oi%20Luis!%20Tenho%20interesse%20em%20um%20site%20personalizado%20e%20gostaria%20de%20solicitar%20um%20or%C3%A7amento." target="_blank" rel="noopener">Solicitar orçamento</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">© 2025 Luis Eduardo Fernandes</div>
+  </footer>
+
+  <audio id="bgAudio" preload="auto" loop>
+    <source src="assets/audio/trilha-sutil.mp3" type="audio/mpeg" />
+  </audio>
+
+  <script>
+    // Hamburguer
+    const btn = document.getElementById('hamburger');
+    const menu = document.getElementById('menu');
+    btn.addEventListener('click', () => {
+      const open = menu.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      if(open) menu.querySelector('a,button').focus();
+    });
+    window.addEventListener('keydown', (e)=>{ if(e.key==='Escape') menu.classList.remove('open'); });
+    document.addEventListener('click', (e)=>{
+      if(!menu.contains(e.target) && !btn.contains(e.target)) menu.classList.remove('open');
+    });
+
+    // Áudio toggle no menu + auto start após primeira interação
+    const audio = document.getElementById('bgAudio');
+    const audioToggle = document.getElementById('audioToggle');
+    let playing = false;
+    audio.volume = 0.35;
+    audioToggle.addEventListener('click', async () => {
+      try {
+        if (!playing) { await audio.play(); playing = true; audioToggle.setAttribute('aria-pressed','true'); audioToggle.textContent='⏸️ Pausar trilha'; }
+        else { audio.pause(); playing = false; audioToggle.setAttribute('aria-pressed','false'); audioToggle.textContent='🎧 Trilha sutil'; }
+      } catch (err) { console.warn(err); }
+    });
+    // Tenta iniciar ao primeiro gesto do usuário
+    const firstGesturePlay = async () => {
+      try { await audio.play(); playing = true; audioToggle.setAttribute('aria-pressed','true'); audioToggle.textContent='⏸️ Pausar trilha'; }
+      catch(e){} 
+      window.removeEventListener('pointerdown', firstGesturePlay);
+    };
+    window.addEventListener('pointerdown', firstGesturePlay, { once: true });
+
+    // Preconnect
+    const link = document.createElement('link'); link.rel='preconnect'; link.href='https://images.unsplash.com'; document.head.appendChild(link);
+  </script>
 </body>
 </html>

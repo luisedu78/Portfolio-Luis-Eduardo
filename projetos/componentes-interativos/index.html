@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Componentes Interativos — Projeto</title>
+  <style>
+    :root{--bg:#0e1116;--text:#e8eef9;--muted:#9fb3c8;--brand:#5ac8fa;--brand-2:#8a5afc;--shadow:0 10px 30px rgba(0,0,0,.35)}
+    *,*::before,*::after{box-sizing:border-box}
+    body{margin:0;font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial;color:var(--text);
+         background:radial-gradient(1200px 800px at 80% -10%, rgba(90,200,250,.12), transparent 60%),radial-gradient(900px 600px at -10% 10%, rgba(138,90,252,.10), transparent 55%),#0e1116;line-height:1.6}
+    a{color:var(--brand)}
+    .container{max-width:1000px;margin:0 auto;padding:0 clamp(16px,4vw,28px)}
+    header{position:sticky;top:0;z-index:50;backdrop-filter:blur(8px);background:linear-gradient(180deg, rgba(20,25,34,.85), rgba(20,25,34,.55) 40%, rgba(20,25,34,0));border-bottom:1px solid rgba(255,255,255,.08)}
+    nav{display:flex;align-items:center;justify-content:space-between;padding:12px 0;gap:12px}
+    .brand{display:flex;align-items:center;gap:10px;font-weight:700}
+    .badge{font-size:12px;padding:4px 8px;border-radius:999px;background:linear-gradient(90deg, rgba(90,200,250,.22), rgba(138,90,252,.22));border:1px solid rgba(255,255,255,.1)}
+    .hamburger{display:inline-flex;flex-direction:column;gap:4px;border:1px solid rgba(255,255,255,.15);padding:8px 10px;border-radius:12px;background:rgba(255,255,255,.05);cursor:pointer}
+    .hamburger span{width:20px;height:2px;background:#e8eef9;display:block;border-radius:2px}
+    .menu{position:fixed;inset:auto 0 0 auto;right:16px;top:56px;min-width:260px;max-width:85vw;background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));border:1px solid rgba(255,255,255,.10);border-radius:16px;box-shadow:var(--shadow);transform:translateY(-12px) scale(.98);opacity:0;pointer-events:none;transition:.2s ease;}
+    .menu.open{transform:none;opacity:1;pointer-events:auto}
+    .menu a,.menu button{display:flex;width:100%;text-align:left;padding:12px 14px;border:none;background:transparent;color:#e8eef9;font-weight:600}
+    .hero{padding:56px 0 24px;text-align:center}
+    .title{font-size:clamp(26px,4vw,44px);margin:0}
+    .subtitle{color:var(--muted);margin:8px 0 0}
+    section{padding:40px 0}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.1);border-radius:18px;padding:18px;box-shadow:var(--shadow)}
+    .btn{display:inline-block;margin-top:16px;padding:12px 16px;border-radius:14px;font-weight:700;border:1px solid rgba(255,255,255,.1);background:linear-gradient(90deg, var(--brand), var(--brand-2));color:#06121c;text-decoration:none}
+    footer{padding:40px 0 60px;color:var(--muted);text-align:center}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <nav aria-label="Navegação principal">
+        <div class="brand" aria-label="Identidade">
+          <a href="../../" style="display:flex;align-items:center;gap:10px;text-decoration:none;color:inherit;">
+            <svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M3 12h2v6H3v-6Zm4-8h2v14H7V4Zm4 4h2v10h-2V8Zm4-3h2v13h-2V5Zm4 6h2v7h-2v-7Z"/></svg>
+            <span>Luis Eduardo Fernandes</span>
+          </a>
+          <span class="badge">Projeto</span>
+        </div>
+        <button id="hamburger" class="hamburger" aria-label="Abrir menu" aria-controls="menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+        <div id="menu" class="menu" role="menu">
+          <a href="../../#sobre" role="menuitem">Sobre</a>
+          <a href="../../#habilidades" role="menuitem">Habilidades</a>
+          <a href="../../#projetos" role="menuitem">Projetos</a>
+          <a href="../../#contato" role="menuitem">Contato</a>
+          <button id="audioToggle" role="menuitem" aria-pressed="false">🎧 Trilha sutil</button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <h1 class="title">Componentes Interativos</h1>
+        <p class="subtitle">Modal + card interativo em JS Vanilla.</p>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="card">
+          
+<h2>Demo: Modal e Card interativo</h2>
+<button id='openModal' class='btn' style='background:linear-gradient(90deg,#5ac8fa,#8a5afc);color:#06121c'>Abrir Modal</button>
+<div id='modal' style='display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);place-items:center'>
+  <div style='background:#141922;border:1px solid rgba(255,255,255,.1);padding:24px;border-radius:16px;max-width:520px'>
+    <h3>Olá!</h3>
+    <p>Este é um modal simples em JS Vanilla.</p>
+    <button id='closeModal' class='btn'>Fechar</button>
+  </div>
+</div>
+<script>
+  const openM=document.getElementById('openModal'); const modal=document.getElementById('modal'); const closeM=document.getElementById('closeModal');
+  openM.addEventListener('click',()=>{ modal.style.display='grid'; });
+  closeM.addEventListener('click',()=>{ modal.style.display='none'; });
+  modal.addEventListener('click',(e)=>{ if(e.target===modal) modal.style.display='none'; });
+</script>
+
+          <a class="btn" href="../../">Voltar ao Portfólio</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">© 2025 Luis Eduardo Fernandes</div>
+  </footer>
+
+  <audio id="bgAudio" preload="auto" loop><source src="../../assets/audio/trilha-sutil.mp3" type="audio/mpeg"/></audio>
+  <script>
+    const btn=document.getElementById('hamburger');const menu=document.getElementById('menu');
+    btn.addEventListener('click',()=>{const open=menu.classList.toggle('open');btn.setAttribute('aria-expanded',open?'true':'false');if(open)menu.querySelector('a,button').focus();});
+    window.addEventListener('keydown',(e)=>{if(e.key==='Escape')menu.classList.remove('open')});
+    document.addEventListener('click',(e)=>{if(!menu.contains(e.target)&&!btn.contains(e.target))menu.classList.remove('open')});
+    const audio=document.getElementById('bgAudio');const audioToggle=document.getElementById('audioToggle');let playing=false;audio.volume=0.35;
+    audioToggle.addEventListener('click',async()=>{try{if(!playing){await audio.play();playing=true;audioToggle.setAttribute('aria-pressed','true');audioToggle.textContent='⏸️ Pausar trilha';}else{audio.pause();playing=false;audioToggle.setAttribute('aria-pressed','false');audioToggle.textContent='🎧 Trilha sutil';}}catch(err){}});
+    const firstGesturePlay = async () => { try{ await audio.play(); playing=true; audioToggle.setAttribute('aria-pressed','true'); audioToggle.textContent='⏸️ Pausar trilha'; } catch(e){} window.removeEventListener('pointerdown', firstGesturePlay); };
+    window.addEventListener('pointerdown', firstGesturePlay, { once:true });
+  </script>
+</body>
+</html>
