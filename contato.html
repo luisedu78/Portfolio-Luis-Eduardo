@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contato | Luis Eduardo Fernandes</title>
+  <style>
+    :root {
+      --primary: #2c3e50;
+      --accent: #3498db;
+      --bg: #f5f8fc;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      background: var(--bg);
+      color: var(--primary);
+      line-height: 1.6;
+    }
+    header {
+      background: linear-gradient(135deg, var(--primary), #1a1a1a);
+      color: white;
+      text-align: center;
+      padding: 30px 20px;
+    }
+    header a {
+      color: white;
+      background-color: var(--accent);
+      padding: 10px 20px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s;
+      display: inline-block;
+      margin-bottom: 20px;
+    }
+    .contact-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      max-width: 1000px;
+      margin: 50px auto;
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+    }
+    .contact-text, .contact-info {
+      flex: 1 1 400px;
+      padding: 20px;
+    }
+    .contact-text h2, .contact-info h2 {
+      color: var(--accent);
+      margin-bottom: 15px;
+    }
+    .contact-info li {
+      margin-bottom: 15px;
+      font-size: 1.05rem;
+      display: flex;
+      align-items: center;
+    }
+    .contact-info img.icon {
+      width: 24px;
+      height: 24px;
+      margin-right: 10px;
+    }
+    footer {
+      text-align: center;
+      margin: 40px 0;
+      font-size: 0.9rem;
+      color: #888;
+    }
+    @media (max-width: 768px) {
+      .contact-container {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="index.html">← Voltar para Início</a>
+    <h1>Contato</h1>
+  </header>
+  <div class="contact-container">
+    <div class="contact-text">
+      <h2>Vamos conversar!</h2>
+      <p>Se você deseja iniciar um projeto, tirar dúvidas ou apenas trocar ideias sobre tecnologia, música ou inovação, estou à disposição. Será um prazer colaborar com você.</p>
+    </div>
+    <div class="contact-info">
+      <h2>Informações de Contato</h2>
+      <ul>
+        <li><img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Gmail_Icon.png" class="icon" alt="Gmail"> <a href="mailto:Luisedufernandes2@gmail.com">Luisedufernandes2@gmail.com</a></li>
+        <li><img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" class="icon" alt="Instagram"> <a href="https://instagram.com/luis_edu_keys" target="_blank">@luis_edu_keys</a></li>
+      </ul>
+    </div>
+  </div>
+  <footer>
+    &copy; 2025 Luis Eduardo Fernandes — Todos os direitos reservados.
+  </footer>
+</body>
+</html>
